@@ -17,7 +17,7 @@ public class LocationTouch : TapBehaviour
         Debug.Log("タップアップ");
         // タップを離したときの処理
         string childName = this.gameObject.name;
-        GameObject childObject = this.transform.parent.gameObject.transform.parent.gameObject.transform.parent.gameObject.transform.FindChild("Locations").gameObject.transform.FindChild(childName).gameObject;
+        GameObject childObject = this.transform.parent.gameObject.transform.parent.gameObject.transform.parent.gameObject.transform.Find("Locations").gameObject.transform.Find(childName).gameObject;
         if (activeFlag)
         {
             childObject.SetActive(false);

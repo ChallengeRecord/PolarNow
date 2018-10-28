@@ -37,10 +37,14 @@ namespace UnityEngine.XR.iOS
         public void DetectionOff()
         {
             if (isDetecting)
+            {
                 isDetecting = false;
+                Debug.Log("isDetecting is false");
+            }
             else
             {
                 isDetecting = true;
+                Debug.Log("isDetecting is true");
             }
         }
 

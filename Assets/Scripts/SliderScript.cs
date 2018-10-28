@@ -4,20 +4,40 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class SliderScript : MonoBehaviour {
-    private Slider slider;
-    private float level;
+    private Slider sliderUp;
+    private Slider sliderTurn;
+    private Slider sliderReverse;
+    private float levelUp;
+    private float levelTurn;
+    private float levelReverse;
 
 	// Use this for initialization
 	void Start () {
-        slider = GameObject.Find("Slider").GetComponent<Slider>();
-        slider.value = 0;
+        sliderUp = GameObject.Find("SliderUp").GetComponent<Slider>();
+        sliderTurn = GameObject.Find("SliderTurn").GetComponent<Slider>();
+        sliderReverse = GameObject.Find("SliderReverse").GetComponent<Slider>();
+        sliderUp.value = 0;
+        sliderReverse.value = 0;
+        sliderTurn.value = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        level = slider.value;
-        Debug.Log(level);
+        levelUp = sliderUp.value;
+        levelTurn = sliderTurn.value;
+        levelReverse = sliderReverse.value;
         Vector3 pos = this.transform.localPosition;
-        this.gameObject.transform.localPosition = new Vector3(pos.x, level, pos.z);
+        Quaternion rotate = this.transform.localRotation;
+        this.gameObject.transform.localPosition = new Vector3(pos.x, levelUp, pos.z);
+        //this.gameObject.transform.rotation = Quaternion.Euler(levelReverse, levelTurn, 0); 
+        if (this.gameObject.name.Equals("earthN"))
+        {
+            this.gameObject.transform.rotation = Quaternion.Euler(levelReverse, levelTurn, 0);
+        }
+        else
+        {
+            this.gameObject.transform.rotation = Quaternion.Euler(levelReverse + 180, levelTurn, 0);
+
+        }
 	}
 }
